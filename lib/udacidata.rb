@@ -39,7 +39,10 @@ class Udacidata
   end
 
   def self.find(id)
-    self.find_by_id(id) ? self.find_by_id(id) : nil
+    if !self.find_by_id(id)
+      raise ProductNotFoundError
+    end
+    self.find_by_id(id)
   end
 
   def self.destroy(id)
